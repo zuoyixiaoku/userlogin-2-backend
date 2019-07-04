@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiang.userlogintest2.mapper.UsersMapper">
+    <!-- <insert id="insertUser" parameterType="user">
+        INSERT INTO user(name,age) values (#{name},#{age})
+    </insert> -->
+    
+    <select id="getUserByName" parameterType="String" resultType="user">
+        SELECT username,password FROM users_manager WHERE username=#{username}
+    </select>
+    
+    <select id="getAllUserInfo" resultType="user">
+        SELECT * FROM users_manager
+    </select>
+    
+    <update id="updateUserInfo">
+    	UPDATE users_manager SET 
+    	username=#{username},
+    	password=#{password}
+    	WHERE id=#{id}
+    </update>
+    
+    <delete id="deleteById">
+    	DELETE FROM users_manager WHERE id=#{id}
+    </delete>
+    
+    <insert id="insertUser">
+    	INSERT INTO users_manager (username,password) values (#{username},#{password})
+    </insert>
+</mapper>
